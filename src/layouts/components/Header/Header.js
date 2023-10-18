@@ -14,14 +14,16 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
+import config from '~/config';
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
 import { InboxIcon, MessagesIcon, UploadIcon } from '~/components/Icons';
 import Image from '~/components/Image';
-import Search from '~/components/Layout/components/Search';
+import Search from '~/layouts/components/Search';
 
 const cx = classNames.bind(styles);
 
@@ -81,7 +83,7 @@ function Header() {
         {
             icon: <FontAwesomeIcon icon={faUser} />,
             title: 'View profile',
-            to: '/@man',
+            to: '/profile/:nickname',
         },
         {
             icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -111,7 +113,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="tik tok" />
+                    <Link to={config.routes.home}>
+                        <img src={images.logo} alt="tik tok" />
+                    </Link>
                 </div>
 
                 {<Search />}
@@ -146,7 +150,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/3c0bd79020deab1aa57e7afb9f37bcb9~c5_100x100.jpeg?x-expires=1697364000&x-signature=Lobba58J7xd%2BasPBfycVRrMiO0o%3D"
+                                src="https://p16-sign-va.tiktokcdn.com/musically-maliva-obj/1594805258216454~c5_720x720.jpeg?x-expires=1697554800&x-signature=WzZQH4LTrps%2B3QKyqjNZe0obH6o%3D"
                                 alt="Nguyen Huy Hop"
                             />
                         ) : (
